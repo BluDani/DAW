@@ -7,7 +7,7 @@
 <body>
     <h1>Calculadora - Soma</h1>
 
-    <form method="GET" action="ex02_soma.php">
+    <form method="GET" action="Atividade calculadora.php">
         operador 1: <input type="number" name="op1"> +
         operador 2: <input type="number" name="op2">
         <br>
