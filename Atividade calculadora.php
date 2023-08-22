@@ -5,7 +5,7 @@
 </head>
 
 <body>
-    <h1>Calculadora - Soma</h1>
+    <h1>Calculadora</h1>
 
     <form method="GET" action="Atividade calculadora.php">
         operador 1: <input type="number" name="op1"> +
