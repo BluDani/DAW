@@ -5,7 +5,7 @@
     $data = "";
     $msg = "";
 
-    $arquivoAlunoIn = fopen("disciplinas.txt", "r") or die("erro ao criar arquivo");
+    $arquivoAlunoIn = fopen("alunos.txt", "r") or die("erro ao criar arquivo");
 
     $x = 0;
     $linhas[] = fgets($arquivoAlunoIn);
@@ -19,7 +19,7 @@
     </head>
 
     <body>
-    <h1>Criar Nova Disciplina</h1>
+    <h1>Criar Nova Aluno</h1>
     <table>
     <tr>
         <th>Nome</th>
