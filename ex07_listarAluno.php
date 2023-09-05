@@ -48,36 +48,6 @@
     ?>
 
     </table>
-
-    <table>
-    <tr>
-        <th>Nome</th>
-        <th>Matrícula<th>
-        <th>Data<th>
-    </tr>
-    <?php
-
-    $x = 0;
-    while (!feof($arquivoAlunoIn)){
-
-        $linhas[] = fgets($arquivoAlunoIn);
-        $colunaDados = explode(";", $linhas[$x]);
-        $nome = $colunaDados[0];
-        $sigla = $colunaDados[1];
-        $carga = $colunaDados[2];
-
-    ?>
-
-    <tr>
-        <td><?php echo $nome ?></td>
-        <td><?php echo $matricula ?></td>
-        <td><?php echo $data ?></td>
-    <?php $x++;
-    }
-    ?>
-    
-    </tr>
-    </table>
     
     <p><?php echo $msg ?></p>
     <br>
