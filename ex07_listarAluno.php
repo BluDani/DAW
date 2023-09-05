@@ -19,12 +19,12 @@
     </head>
 
     <body>
-    <h1>Criar Nova Aluno</h1>
+    <h1>Lista de Aluno</h1>
     <table>
     <tr>
         <th>Nome</th>
-        <th>Matrícula<th>
-        <th>Data nasc<th>
+        <th>Matrícula</th>
+        <th>Data nasc</th>
     </tr>
     <?php
 
