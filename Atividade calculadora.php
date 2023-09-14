@@ -5,7 +5,7 @@
     <title>Calculadora</title>
 
     <style>
-
+        
     </style>
 </head>
 
@@ -19,7 +19,6 @@
         <br>
         <br>
 
-        <button>Soma</button>
         <input type="radio" name="escolha" value="1" >
         <label>Soma</label>
         <br>
@@ -46,6 +45,10 @@
 
         <input type="radio" name="escolha" value="7" >
         <label>Cosseno</label>
+        <br>
+
+        <input type="radio" name="escolha" value="8" >
+        <label>Tangente</label>
 
         <br>
         <br>
@@ -89,20 +92,20 @@
         echo "<h2>$result</h2>";
     }
 
-    function seno($v1, $v2){
-        $result = sen;
+    function seno($v1){
+        $result = sin($v1);
 
         echo "<h2>$result</h2>";
     }
 
-    function cosseno($v1, $v2){
-        $result = cos;
+    function cosseno($v1){
+        $result = cos($v1);
 
         echo "<h2>$result</h2>";
     }
 
-    function tangente($v1, $v2){
-        $result = tan;
+    function tangente($v1){
+        $result = tan($v1);
 
         echo "<h2>$result</h2>";
     }
@@ -126,10 +129,13 @@
         case 5: potencia($v1, $v2);
         break;
 
-        case 6: seno($v1, $v2);
+        case 6: seno($v1);
         break;
 
-        case 7: cosseno($v1, $v2);
+        case 7: cosseno($v1);
+        break;
+
+        case 8: tangente($v1);
         break;
     }
 
