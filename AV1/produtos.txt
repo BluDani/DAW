@@ -1,3 +1,0 @@
-01;xbox;3000
-02;carregador;30
-03;fone;10
