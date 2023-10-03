@@ -1,0 +1,2 @@
+02;carregador;3;30
+
