@@ -59,7 +59,7 @@
                 echo "<td>R$ $valor</td>";
                 echo "<td>R$ $subTotal</td>";
                 echo "<td> 
-                <form action='excluir.php' method='POST'>
+                <form action='excluirCarrinho.php' method='POST'>
                     <input type='hidden' name='id' value='$id'>
                     <input type='submit' value='Excluir'>
                 </form> </td>";

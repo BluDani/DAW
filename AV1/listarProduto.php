@@ -27,6 +27,7 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Valor</th>
+            <th>Carrinho</th>
             <th>Opção</th>
         </tr>
 
@@ -53,6 +54,13 @@
                     <input type='hidden' name='valor' value='$valor'>
                     <input type='number' name='quant' id='quant'>
                     <input type='submit' value='Adicionar'>
+                </form> </td>";
+                echo "<td> 
+                <form action='excluirProduto.php' method='POST'>
+                    <input type='hidden' name='id' value='$id'>
+                    <input type='hidden' name='nome' value='$nome'>
+                    <input type='hidden' name='valor' value='$valor'>
+                    <input type='submit' value='Excluir'>
                 </form> </td>";
                 echo "</tr>";
 
