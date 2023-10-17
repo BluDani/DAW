@@ -18,7 +18,9 @@
     fclose($arqAux);
 
     // Substitui o arquivo original pelo auxiliar
-    rename("auxiliar.txt", "carrinho.txt");
+    copy("auxiliar.txt", "carrinho.txt");
+
+    unlink("auxiliar.txt");
 ?>
 
 <!DOCTYPE html>

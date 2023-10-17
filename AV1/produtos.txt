@@ -8,3 +8,4 @@
 29;Boticario Cuide-se Bem (Restauracao Extraordinaria) - Condicionador 250 Ml;24.99
 30;Boticario Cuide-se Bem (Hidratacao Imediata)  - Shampoo Hidratante 250 Ml;24.99
 31;Boticario Cuide-se Bem (Hidratacao Imediata) - Shampoo Hidratante 250 Ml;24.99
+08;PS5;5000;

@@ -22,6 +22,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Produto</title>
+
+    <link rel="stylesheet" href="myStyle.css">
 </head>
 <body>
     

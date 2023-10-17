@@ -61,7 +61,15 @@
                     <input type='hidden' name='nome' value='$nome'>
                     <input type='hidden' name='valor' value='$valor'>
                     <input type='submit' value='Excluir'>
+                </form> 
+
+                <form action='Alterar.php' method='POST'>
+                    <input type='hidden' name='id' value='$id'>
+                    <input type='hidden' name='nome' value='$nome'>
+                    <input type='hidden' name='valor' value='$valor'>
+                    <input type='submit' value='Alterar'>
                 </form> </td>";
+
                 echo "</tr>";
 
                 $x++;
