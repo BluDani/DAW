@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora JS</title>
+
+    <script>
+
+        function Escolha(){
+            let escolha = document.getElementById("opcao").value;
+            parseInt(escolha);
+
+            if(escolha == 1){
+                Soma();
+            }
+            else{
+                Subtracao();
+            }
+
+            // switch(escolha){
+
+            //     case 1: Soma();
+            //             break;
+
+            //     case 2: Subtracao();
+            //             break;
+
+            //     default: break;
+            // }
+        }
+
+        function Soma(){
+            let var1 = document.getElementById("var1").value;
+            let var2 = document.getElementById("var2").value;
+            let resultado = parseInt(var1) + parseInt(var2);
+
+            document.getElementById("resultado").innerHTML = "Resultado: " + resultado;
+        }
+
+        function Subtracao(){
+            let var1 = document.getElementById("var1").value;
+            let var2 = document.getElementById("var2").value;
+            let resultado = parseInt(var1) - parseInt(var2);
+
+            document.getElementById("resultado").innerHTML = "Resultado: " + resultado;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        Primeiro número <input type="number" id="var1">
+
+        <select id="opcao">
+            <option value="1">Soma</option>
+            <option value="2">Subtração</option>
+        </select>
+
+        Segundo número <input type="number" id="var2">
+
+        <input type="button" value="Calcular" onclick="Escolha()">
+
+        <span id="resultado"></span>
+    </div>
+</body>
+</html>
