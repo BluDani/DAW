@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Produtos</title>
+
+  <link rel="stylesheet" href="myStyle.css">
+  <script>
+
+    function BuscarProduto(Id) {
+      let xmlhttp = new XMLHttpRequest();
+      console.log("1");
+
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          let objReturnJSON = JSON.parse(this.responseText);
+
+          document.getElementById("id").value = objReturnJSON.id;
+          document.getElementById("nome").value = objReturnJSON.nome;
+          document.getElementById("valor").value = objReturnJSON.valor;
+
+        } 
+        else if(this.readyState < 4){
+          console.log("3: " + this.readyState);
+        } 
+        else{
+
+          console.log("Requisicao falhou: " + this.status);
+        }
+      }
+
+      console.log("4");
+      xmlhttp.open("GET", "http://localhost/DAW/AV1_2/listarProduto.php?id=" + Id);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+    }
+
+    function ExibeForm(id, nome, valor){
+
+      document.getElementById("alterar").style.display = "block";
+
+      document.getElementById("id").value = id;
+      document.getElementById("nome").value = nome;
+      document.getElementById("valor").value = valor;
+    }
+
+    function AlterarProduto(){
+
+      document.getElementById("alterar").style.display = "none";
+
+      let id = document.getElementById("id").value;
+      let nome = document.getElementById("nome").value;
+      let valor = document.getElementById("valor").value;
+
+      let xmlhttp = new XMLHttpRequest();
+      console.log("1");
+
+      xmlhttp.onreadystatechange = function (){
+        
+        if(this.readyState == 4 && this.status == 200){
+
+          console.log("Chegou a resposta OK: " + this.responseText);
+          console.log("2");
+        } 
+        else if(this.readyState < 4){
+
+          console.log("3: " + this.readyState);
+        } 
+        else{
+
+          console.log("Requisicao falhou: " + this.status);
+        }
+      };
+
+      console.log("4");
+
+      xmlhttp.open("POST", "http://localhost/DAW/AV1_2/alterarProduto.php");
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("id=" + id + "&nome=" + nome + "&valor=" + valor);
+
+      console.log("enviei form");
+      console.log("5");
+    }
+
+
+    //Exclui um produto
+    function ExcluirProduto(id){
+      let xmlhttp = new XMLHttpRequest();
+      
+      xmlhttp.onreadystatechange = function(){
+
+        if(this.readyState == 4 && this.status == 200){
+
+          console.log("Produto excluído com sucesso!");
+        } 
+        else if(this.readyState < 4){
+
+          console.log("3: " + this.readyState);
+        } 
+        else{
+
+          console.log("Falha ao excluir o produto: " + this.status);
+        }
+      }
+
+      xmlhttp.open("POST", "http://localhost/DAW/AV1_2/excluirProduto.php");
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("id=" + id);
+    }
+
+    //Lista toda a lista de produtos
+    function ListarProdutos(){
+
+      let xmlhttp = new XMLHttpRequest();
+      console.log("1");
+
+      xmlhttp.onreadystatechange = function(){
+
+        if (this.readyState == 4 && this.status == 200){
+
+          console.log("Chegou a resposta OK: " + this.responseText);
+          console.log("2");
+          let objReturnJSON = JSON.parse(this.responseText);
+
+          // tornando o cabeçalho visível
+          document.getElementById("tab").style.display="block";
+          CriarCabecalho();
+
+          for (let i = 0; i < objReturnJSON.length; i++) {
+            let linha = objReturnJSON[i];
+            CriarLinhaTabela(linha);
+          }
+        } 
+        else if(this.readyState < 4){
+
+          console.log("3: " + this.readyState);
+        } 
+        else{
+
+          console.log("Requisicao falhou: " + this.status);
+        }
+      }
+
+      console.log("4");
+      xmlhttp.open("GET", "http://localhost/DAW/AV1_2/listarProduto.php");
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+
+      console.log("enviei request get");
+      console.log("5");
+    }
+
+    //Cria cabeçalho da tabela
+    function CriarCabecalho(){
+
+      let table = document.getElementById("tab");
+
+      let tr = document.createElement("tr");
+
+      let th1 = document.createElement("th");
+      th1.textContent = "ID";
+      tr.appendChild(th1);
+
+      let th2 = document.createElement("th");
+      th2.textContent = "Nome";
+      tr.appendChild(th2);
+
+      let th3 = document.createElement("th");
+      th3.textContent = "Valor";
+      tr.appendChild(th3);
+
+      let th4 = document.createElement("th");
+      th4.textContent = "Ações";
+      tr.appendChild(th4);
+
+      table.appendChild(tr);
+    }
+
+    //Cria linha na tabela
+    function CriarLinhaTabela(pobjReturnJSON){
+
+      let table = document.getElementById("tab");
+
+      let tr = document.createElement("tr");
+
+      let td1 = document.createElement("td");
+      td1.textContent = pobjReturnJSON.id;
+      tr.appendChild(td1);
+
+      let td2 = document.createElement("td");
+      td2.textContent = pobjReturnJSON.nome;
+      tr.appendChild(td2);
+
+      let td3 = document.createElement("td");
+      td3.textContent = pobjReturnJSON.valor;
+      tr.appendChild(td3);
+
+      let td4 = document.createElement("td");
+      let btnAlterar = document.createElement("button");
+      btnAlterar.textContent = "Alterar";
+
+      //Evento Alterar
+      btnAlterar.addEventListener("click", function(){
+        ExibeForm(pobjReturnJSON.id, pobjReturnJSON.nome, pobjReturnJSON.valor);
+        document.getElementById("tab").style.display = "none";
+      });
+      td4.appendChild(btnAlterar);
+
+      let btnExcluir = document.createElement("button");
+      btnExcluir.textContent = "Excluir";
+
+      //Evento Excluir
+      btnExcluir.addEventListener("click", function(){
+        ExcluirProduto(pobjReturnJSON.id);
+        document.getElementById("tab").style.display = "none";
+      });
+      td4.appendChild(btnExcluir);
+
+      tr.appendChild(td4);
+
+      // Adicionando a nova linha antes da última linha existente
+      table.appendChild(tr);
+    }
+
+    //Delata tabela
+    function DeletarTabela(){
+
+      let table = document.getElementById("tab");
+
+      table.innerHTML = ""; // Limpa o conteúdo da tabela
+    }
+    
+  </script>
+
+</head>
+<body>
+  <h1>Listar Produtos</h1>
+  <br>
+  <ul>
+    <li onclick="">Inserir Produto</li>
+    <li onclick="">Alterar Produto</li>
+    <li onclick="ListarProdutos()">Listar Produtos</li>
+    <li onclick="">Excluir Produto</li>
+    <li onclick="">Detalhe de Pergunta</li>
+  </ul>
+
+  <button onclick="DeletarTabela(), ListarProdutos()">Listar Produto</button>
+
+  <form action="" method="POST" id="alterar" style="display: none;">
+
+    ID <input type="text" name="id" id="id">
+    <br><br>
+
+    Nome <input type="text" name="nome" id="nome">
+    <br><br>
+
+    Valor <input type="number" name="valor" id="valor">
+    <br><br>
+
+    <input type="button" value="Alterar" onclick="AlterarProduto()">
+  </form>
+
+  <table id="tab" style="display: none;">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Valor</th>
+      <th>Ações</th>
+    </tr>
+  </table>
+  <br>
+</body>
+</html>

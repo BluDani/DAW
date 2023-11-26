@@ -1,0 +1,13 @@
+table, tr, th, td {
+
+    border: solid black 2px;
+    border-collapse: collapse;
+
+    padding: 4px;
+    text-align: center;
+}
+
+input#quant{
+
+    width: 20%;
+}
