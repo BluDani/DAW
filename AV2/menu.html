@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidato</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="candidato.js"></script>
+    <script src="fiscal.js"></script>
+</head>
+<body>
+
+    <nav>
+
+        <button onclick="document.getElementById('tab').style.display = 'none', document.getElementById('alterar').style.display='none',
+        document.getElementById('inserir').style.display='none', document.getElementById('fiscal').style.display='block'
+        ">Inserir Fiscal</button>
+
+        <button onclick="DeletarTabela(), document.getElementById('inserir').style.display='none', 
+        document.getElementById('alterar').style.display='none', document.getElementById('fiscal').style.display='none',
+        ListarFiscais()">Listar Fiscais</button>
+
+        <button onclick="document.getElementById('tab').style.display = 'none', document.getElementById('alterar').style.display='none',
+        document.getElementById('inserir').style.display='block', document.getElementById('fiscal').style.display='none'
+        ">Inserir Candidato</button>
+
+        <button onclick="DeletarTabela(), document.getElementById('inserir').style.display='none', 
+        document.getElementById('alterar').style.display='none', document.getElementById('fiscal').style.display='none',
+        ListarCandidatos()">Listar Candidatos</button>
+    </nav>
+
+    <section>
+
+        <form action="" method="POST" id="inserir" style="display: none;">
+
+            <h1>Inserir Candidado</h1>
+
+            Nome <input type="text" name="nome" id="nome_I">
+            <br>
+            CPF <input type="text" name="cpf" id="cpf_I">
+            <br>
+            Identidade <input type="text" name="identidade" id="identidade_I">
+            <br>
+            E-mail <input type="text" name="email" id="email_I">
+            <br>
+            Cargo <input type="text" name="cargo" id="cargo_I">
+            <br>
+            Sala de Prova <input type="text" name="sala_I" id="sala_I">
+            <br><br>
+
+            <input type="button" value="Inserir" onclick="InserirCandidato(), DeletarFormCandidato(),
+            document.getElementById('inserir').style.display='none'">
+        </form>
+
+    
+        <form action="" method="POST" id="alterar" style="display: none;">
+
+            <h1>Alterar Sala</h1>
+
+            Nome <input type="text" name="nome" id="nome_A">
+            <br>
+            CPF <input type="text" name="cpf" id="cpf_A">
+            <br>
+            Identidade <input type="text" name="identidade" id="identidade_A">
+            <br>
+            E-mail <input type="text" name="email" id="email_A">
+            <br>
+            Cargo <input type="text" name="cargo" id="cargo_A">
+            <br>
+            Sala de Prova <input type="text" name="sala" id="sala_A">
+            <br><br>
+
+            <input type="button" value="Alterar" onclick="AlterarSala()">
+        </form>
+
+        <form action="" method="POST" id="fiscal" style="display: none;">
+
+            <h1>Inserir Fiscal</h1>
+
+            Nome <input type="text" name="nome" id="nome_fiscal">
+            <br>
+            CPF <input type="text" name="cpf" id="cpf_fiscal">
+            <br>
+            Sala de Prova <input type="text" name="sala" id="sala_fiscal">
+            <br><br>
+
+            <input type="button" value="Inserir" onclick="InserirFiscal(), DeletarFormFiscal(),
+            document.getElementById('fiscal').style.display='none'">
+        </form>
+
+        <table id="tab" style="display: none;"></table>
+    </section>
+    
+</body>
+</html>

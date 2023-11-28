@@ -19,8 +19,7 @@
         die("Conexao falhou, avise o administrador do sistema");
     }
 
-    $comandoSQL = "INSERT INTO `candidatos` (nome,cpf,identidade,email,cargo,sala) values ('$nome', '$cpf', 
-    '$identidade', '$email', '$cargo', $sala)";
+    $comandoSQL = "INSERT INTO `candidatos` (nome,cpf,identidade,email,cargo,sala) values ('$nome', '$cpf', '$identidade', '$email', '$cargo', $sala)";
     
     $resultado = $conn->query($comandoSQL);
 
